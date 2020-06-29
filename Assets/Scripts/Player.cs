@@ -13,12 +13,13 @@ public class Player : MonoBehaviour
     float horizontal;
     public float moveSpeed;
 
+    Feet feet;
 
     // Start is called before the first frame update
     void Awake()
     {
        rb = GetComponent<Rigidbody2D>();
-
+        feet = gameObject.GetComponentInChildren<Feet>();
     }
 
     // Update is called once per frame
@@ -39,7 +40,7 @@ public class Player : MonoBehaviour
 
     void Jump()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && feet.isGround)
         {
             rb.velocity = Vector2.up * jumpVelocity;
         }
