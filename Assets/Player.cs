@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     Rigidbody2D rb;
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
+    float horizontal;
+    public float moveSpeed;
 
 
     // Start is called before the first frame update
@@ -25,6 +27,7 @@ public class Player : MonoBehaviour
 
         Jump();
         BetterJump();
+        Movement();
         
     }
 
@@ -61,6 +64,20 @@ public class Player : MonoBehaviour
 
         }
     }
+
+
+    void Movement()
+    {
+
+       horizontal = Input.GetAxis("Horizontal");
+
+        transform.position += new Vector3(horizontal,0f,0f) * Time.deltaTime * moveSpeed;
+    
+    }
+
+
+
+
 
 
 
